@@ -47,10 +47,14 @@ void loop()
   // Read normalized values
   Vector norm = mpu.readNormalizeGyro();
 
-  // Calculate Pitch, Roll and Yaw
-  pitch = pitch + norm.YAxis * timeStep;
-  roll = roll + norm.XAxis * timeStep;
-  yaw = yaw + norm.ZAxis * timeStep;
+  // // Calculate Sum of Pitch, Roll and Yaw
+  // pitch = pitch + norm.YAxis * timeStep;
+  // roll = roll + norm.XAxis * timeStep;
+  // yaw = yaw + norm.ZAxis * timeStep;
+   // Calculate Pitch, Roll and Yaw at that timestep(make sure its at zero at the end) 
+  pitch = norm.YAxis * timeStep;
+  roll = norm.XAxis * timeStep;
+  yaw = norm.ZAxis * timeStep;
 
   // Output raw
   Serial.print(" Pitch = ");
